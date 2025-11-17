@@ -25,7 +25,7 @@ import java.util.Random;
  * This application does not exploit the model-view-controller pattern, and as
  * such is just to be used to learn the basics, not as a template for your
  * applications.
- */
+ */ 
 public class BadIOGUI {
 
     private static final String TITLE = "A very simple GUI application";
@@ -42,9 +42,14 @@ public class BadIOGUI {
     public BadIOGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
+
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        frame.add(panel, BorderLayout.CENTER);
         final JButton write = new JButton("Write on file");
-        canvas.add(write, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
+        panel.add(write, BorderLayout.CENTER);
+        //canvas.add(write, BorderLayout.CENTER);
+        frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
@@ -81,7 +86,9 @@ public class BadIOGUI {
         final Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         final int sw = (int) screen.getWidth();
         final int sh = (int) screen.getHeight();
-        frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        
+        //frame.setSize(sw / PROPORTION, sh / PROPORTION);
+        frame.pack();
         /*
          * Instead of appearing at (0,0), upper left corner of the screen, this
          * flag makes the OS window manager take care of the default positioning
